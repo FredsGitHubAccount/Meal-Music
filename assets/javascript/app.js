@@ -1,9 +1,7 @@
-
-
-
+// Yelp Api-Key
 let apiKEY = "Bearer lhxtMMrJKWK0-jlsuWz-Nr_TLtpMP00yllbOkFIDCP3GE9RQpZ0i9DBLzwNhvI5jsRPTZcQzoKAgoXiQbk1RkN_nokEXjigC5mozh90EGcO6217_NOGZtSxpm_hIXXYx"
 
-
+// Constructs yelp URL based on location & categories
 function buildQueryUrl () {
 
 let queryURL = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?`
@@ -18,13 +16,10 @@ return queryURL + $.param(queryParams)
 
 }
 
-
-
-
 $("#rest-search").on("click",function(event){
 
     $("#rest-holder").empty()
-   
+    
     event.preventDefault()
     let completeURL = buildQueryUrl()
     console.log(buildQueryUrl())
@@ -38,8 +33,10 @@ $.ajax({
 }).then(function(response){
 
     $("#rest-input").val("")
-    shortcut = response.businesses
-    
+ 
+    let shortcut = response.businesses
+    $("#restaurants-text").empty()
+   
     for (let i = 0; i < shortcut.length; i++){
         console.log(shortcut[i].name)
         console.log(shortcut[i].categories[0].title)
