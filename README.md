@@ -13,13 +13,14 @@ Project description here...
 ## Techologies
 
 backend:
+
+frontend:
 - [ ] HTML5
 - [ ] CSS3
 - [ ] Javascript
 - [ ] JQuery
 - [ ] Bootstrap
-
-frontend:
+- [ ] Google Fonts
 
 design:
 
