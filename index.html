@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
@@ -22,77 +22,72 @@
   <img src="assets/images/fork.png" width="75" height="75" alt="">
   <a class="navbar-brand"></a>
   <form class="form-inline">
-    <button class="btn my-2 my-sm-0 text-white" type="submit">login</button>
-    <button class="btn btn-outline-white my-2 my-sm-0" type="submit">Sign Up</button>
+    <button class="btn btn-outline-black my-2 my-sm-0 text-black" type="submit">Login</button>
+    <button class="btn btn-outline-black my-2 my-sm-0" type="submit">Sign Up</button>
   </form>
 </nav>
 <br>
 <!-- header jumbotron -->
 
 <body>
-  <div class="body-container">
-    <br>
-    <div class="container">
-      <div class="jumbotron rounded">
-        <div class="col-xl-12">
-          <h1 class="text-center rounded">Meal Music</h1>
-        </div>
-        <br>
-        <!-- body jumbotron -->
-        <form id="movie-form shadow-sm p-3 mb-5 rounded">
-          <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-              <button class="input-group-text bg-dark text-white" id="inputGroup-sizing-lg">Search</button>
-            </div>
-            <input type="text" placeholder="Thai, Mexican, American" class="form-control" aria-label="Large"
-              aria-describedby="inputGroup-sizing-sm">
-          </div>
-        </form>
+
+  <br>
+  <div class="container">
+    <div class="jumbotron rounded">
+      <div class="col-xl-12">
+        <h1 class="text-center rounded">Meal Music</h1>
       </div>
-      <!-- restauraunt display jumbotron -->
-      <div class="jumbotron">
-        <h1 id="rest">Restauraunt Near You</h1>
-        <div class="jumbotron bg-white rounded">
-          <div class="col-xl-12 bg-light col-xl-12 shadow-sm p-3 mb-5 rounded">
-            Restauraunt Display
-            <div id="button-container">
-            </div>
+      <br>
+      <!-- body jumbotron -->
+      <form id="movie-form shadow-sm p-3 mb-5 rounded">
+        <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+            <button type="submit" class="input-group-text bg-dark text-white" id="rest-search">Search</button>
           </div>
+          <input type="text" placeholder="Thai, Mexican, Chinese" id="rest-input" class="form-control"
+            aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         </div>
-        <!-- playlist jumbotron -->
-        <div class="jumbotron col-xl-12 bg-white shadow-sm p-3 mb-5 rounded i">
-          <div class="row">
-            <div class="col-xl-12">
-              Playlist
-              <div class="gif-container">
-              </div>
-            </div>
-          </div>
-        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Playlist Holder -->
+  <div class="container">
+    <div class="jumbotron rounded">
+      <h1 id="rest"><span id="playlist-text">Your Playlist Will Be Generated Based On Cuisine!</span></h1>
+      <div id="playlist-holder">
       </div>
     </div>
-
-    <!-- Footer -->
-
-    <footer id="sticky-footer" class="page-footer py-3 bg-dark text-white-50">
-      <div class="container text-center">
-        <!--Facebook-->
-        <a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
-        <!--Twitter-->
-        <a class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
-        <!--Instagram-->
-        <a class="ins-ic mr-3" role="button"><i class="fab fa-lg fa-instagram"></i></a>
+  </div>
+  <!-- Restaurant Holder -->
+  <div class="container">
+    <div class="jumbotron rounded">
+      <h1 id="rest"><span id="restaurants-text">Restauraunt Info</span></h1>
+      <div id="rest-holder">
       </div>
-    </footer>
+    </div>
+  </div>
+
+
+
+  <!-- Footer -->
+
+  <footer id="sticky-footer" class="page-footer py-3 bg-dark text-white-50">
+    <div class="container text-center">
+      <!--Facebook-->
+      <a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
+      <!--Twitter-->
+      <a class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
+      <!--Instagram-->
+      <a class="ins-ic mr-3" role="button"><i class="fab fa-lg fa-instagram"></i></a>
+    </div>
+  </footer>
 
 
 </body>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="assets/javascript/app.js"></script>
 
 </html>
 
-<!-- Fixed ajax script, fixed bootstrap script -->
