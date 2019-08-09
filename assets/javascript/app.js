@@ -7,7 +7,8 @@ function buildQueryUrl () {
 let queryURL = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?`
 let queryParams = {}
 queryParams.term = "restaurants"
-queryParams.location = 'berkeley'
+queryParams.location = $('#zip-input').val().trim();
+
 // queryParams.latitude = '37.871593' *WILL USE GOOGLE API FOR LOCATION*
 // queryParams.longitude ='-122.272743'*WILL USE GOOGLE API FOR LOCATION*
 queryParams.categories= $("#rest-input").val().trim()
@@ -19,6 +20,8 @@ return queryURL + $.param(queryParams)
 $("#rest-search").on("click",function(event){
 
     $("#rest-holder").empty()
+    
+
     
     event.preventDefault()
     let completeURL = buildQueryUrl()
@@ -33,6 +36,7 @@ $.ajax({
 }).then(function(response){
 
     $("#rest-input").val("")
+    $('#zip-input').val("")
  
     let shortcut = response.businesses
     $("#restaurants-text").empty()
