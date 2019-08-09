@@ -55,8 +55,8 @@ $("#rest-search").on("click", function (event) {
         else {
             
             // clears the fields
-            $("#rest-input").val("")
-            $('#zip-input').val("")
+            $("#rest-input").val("these are fred's changes")
+            $('#zip-input').val("These are fred's changes")
 
             // empty the placeholder text
             $("#restaurants-text").empty()
