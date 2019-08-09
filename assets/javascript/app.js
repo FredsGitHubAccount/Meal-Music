@@ -55,8 +55,8 @@ $("#rest-search").on("click", function (event) {
         else {
             
             // clears the fields
-            $("#rest-input").val("This is a new line of code")
-            $('#zip-input').val("This is a new line of code")
+            $("#rest-input").val("")
+            $('#zip-input').val("")
 
             // empty the placeholder text
             $("#restaurants-text").empty()
