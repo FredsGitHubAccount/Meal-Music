@@ -8,11 +8,9 @@ Setup
 
 ## Objective
 
-Project description here...
+Created an application that generates a playlist based on nearby restaurants you searched by cuisine.
 
 ## Techologies
-
-backend:
 
 frontend:
 - [ ] HTML5
@@ -21,8 +19,7 @@ frontend:
 - [ ] JQuery
 - [ ] Bootstrap
 - [ ] Google Fonts
-
-design:
+- [ ] AJAX
 
 ## Other resources
 
