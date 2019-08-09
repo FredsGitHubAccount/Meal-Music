@@ -8,9 +8,6 @@ let queryURL = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/busi
 let queryParams = {}
 queryParams.term = "restaurants"
 queryParams.location = $('#zip-input').val().trim();
-
-// queryParams.latitude = '37.871593' *WILL USE GOOGLE API FOR LOCATION*
-// queryParams.longitude ='-122.272743'*WILL USE GOOGLE API FOR LOCATION*
 queryParams.categories= $("#rest-input").val().trim()
 queryParams.limit = 3
 return queryURL + $.param(queryParams) 
@@ -65,7 +62,7 @@ $.ajax({
         $("#rest-holder").append(restDiv)
          
     }
-   $("#restaurants-text").append(`<h1>Restaurants In ${"hello"}</h1>`)
+
     
 })
 
