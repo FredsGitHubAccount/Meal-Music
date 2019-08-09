@@ -53,8 +53,8 @@ $("#rest-search").on("click", function (event) {
         // If valid, dom manipulate
         else {
             // clears the fields
-            $("#rest-input").val("")
-            $('#zip-input').val("")
+            $("#rest-input").val("Testing")
+            $('#zip-input').val("Testing")
 
             // created a shortcut for clean code
 
