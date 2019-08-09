@@ -37,6 +37,7 @@ $.ajax({
     let shortcut = response.businesses
     $("#restaurants-text").empty()
    
+   
     for (let i = 0; i < shortcut.length; i++){
         console.log(shortcut[i].name)
         console.log(shortcut[i].categories[0].title)
@@ -60,7 +61,7 @@ $.ajax({
         $("#rest-holder").append(restDiv)
          
     }
-  
+   $("#restaurants-text").append(`<h1>Restaurants In ${"hello"}</h1>`)
     
 })
 
