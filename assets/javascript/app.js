@@ -43,6 +43,7 @@ $("#rest-search").on("click", function (event) {
 
     }).then(function (response) {
 
+        // created a shortcut for clean code
         let shortcut = response.businesses
 
         // Validates a response, if not gives an error
@@ -52,11 +53,10 @@ $("#rest-search").on("click", function (event) {
 
         // If valid, dom manipulate
         else {
+            
             // clears the fields
             $("#rest-input").val("")
             $('#zip-input').val("")
-
-            // created a shortcut for clean code
 
             // empty the placeholder text
             $("#restaurants-text").empty()
