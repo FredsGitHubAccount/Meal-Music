@@ -106,7 +106,7 @@ $("#rest-search").on("click", function(event) {
 
     // })
 
-    let playlist = $("#rest-input")
+    let playlist = foodToCuisine($("#rest-input").val().trim())
     $.ajax({
         method: "GET",
         url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
@@ -192,13 +192,13 @@ function foodToCuisine(food) {
 
     for (let i = 0; i < cuisines.length; i++) {
         if (cuisines[i].foods.indexOf(food) > -1) {
-            // return cuisines[i].ciusineName
-            console.log(`The food you searched for is in the ${cuisines[i].cuisineName} cuisine!`)
+            return cuisines[i].cuisineName
+                //console.log(`The food you searched for is in the ${cuisines[i].cuisineName} cuisine!`)
+
+        } else {
+            return food
+                // console.log(`The food you searched is not in our array!`)
         }
-        // } else {
-        //     // return food
-        //     console.log(`The food you searched is not in our array!`)
-        // }
     }
 }
 
