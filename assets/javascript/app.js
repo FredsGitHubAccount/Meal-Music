@@ -30,6 +30,11 @@ $("#rest-search").on("click", function (event) {
     // Prevent page from refreshing
     event.preventDefault()
 
+    $("#rest-search").addClass('pulse')
+
+    setTimeout(classRemover, 2000)
+
+
     // complete url will be generated with the buildQueryUrl function
     let completeURL = buildQueryUrl()
     console.log(buildQueryUrl())
@@ -53,7 +58,7 @@ $("#rest-search").on("click", function (event) {
 
         // If valid, dom manipulate
         else {
-            
+
             // clears the fields
             $("#rest-input").val("")
             $('#zip-input').val("")
@@ -77,7 +82,7 @@ $("#rest-search").on("click", function (event) {
                 restImg.attr("src", imgURL)
                 restImg.addClass("img-fluid rounded newImg")
                 let restAdress = $(`<h5>Address : ${shortcut[i].location.display_address}</h5>`)
-                let restWebsite = $(`<h5><a href=${shortcut[i].url}>${shortcut[i].name} Website</a></h5>`)
+                let restWebsite = $(`<h5><a href=${shortcut[i].url}>${shortcut[i].name}'s Website</a></h5>`)
 
                 // adding content to our newly created div
                 restDiv.append(restTitle)
@@ -99,3 +104,8 @@ $("#rest-search").on("click", function (event) {
 
 
 })
+
+// removes class of the search button to pulse after multiple clicks
+function classRemover() {
+    $("#rest-search").removeClass("pulse")
+}
