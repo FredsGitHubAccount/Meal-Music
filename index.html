@@ -14,7 +14,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>Welcome To Meal Music</title>
 </head>
 <!-- Navbar -->
@@ -32,10 +32,10 @@
 <body>
 
   <br>
-  <div class="container">
+  <div class="container animated bounceInLeft">
     <div class="jumbotron rounded">
       <div class="col-xl-12">
-        <h1 class="text-center rounded">Meal Music</h1>
+        <h1 class="text-center rounded"><span id="app-title">Meal Music</span></h1>
       </div>
       <br>
       <!-- body jumbotron -->
@@ -43,7 +43,7 @@
 
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <button type="submit" class="input-group-text bg-dark text-white" id="rest-search">Search</button>
+            <button type="submit" class="input-group-text bg-dark text-white animated" id="rest-search">Search</button>
           </div>
           <input type="text" id="rest-input" placeholder="Thai, Mexican, Chinese" class="form-control">
           <input type="text" id="zip-input" placeholder="Zip Or City Required!" class="form-control">
@@ -52,7 +52,7 @@
     </div>
   </div>
   <!-- Playlist Holder -->
-  <div class="container">
+  <div class="container animated bounceInRight">
     <div class="jumbotron rounded">
       <h1 id="rest"><span id="playlist-text">Your Playlist Will Be Generated Based On Cuisine!</span></h1>
       <div id="playlist-holder">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <!-- Restaurant Holder -->
-  <div class="container">
+  <div class="container animated bounceInLeft">
     <div class="jumbotron rounded">
       <h1 id="rest"><span id="restaurants-text">Restauraunt Info Will Be Generated Based On Location!</span></h1>
       <div id="rest-holder">
