@@ -30,6 +30,11 @@ $("#rest-search").on("click", function(event) {
     // Prevent page from refreshing
     event.preventDefault()
 
+    $("#rest-search").addClass('pulse')
+
+    setTimeout(classRemover, 2000)
+
+
     // complete url will be generated with the buildQueryUrl function
     let completeURL = buildQueryUrl()
     console.log(buildQueryUrl())
@@ -253,3 +258,7 @@ foodToCuisine("peking duck");
 
 
 // });
+// removes class of the search button to pulse after multiple clicks
+function classRemover() {
+    $("#rest-search").removeClass("pulse")
+}
