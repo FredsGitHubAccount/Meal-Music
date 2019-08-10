@@ -77,6 +77,49 @@ $("#rest-search").on("click", function(event) {
     })
 
 
+    let CLIENT_ID = '20ca2da8c4a44e2db6dca0c2b59f7823';
+    let CLIENT_SECRET = '9cea1b28e5ae495e816ab87d9a7250ba';
+
+
+
+    // var encodedData = window.btoa(CLIENT_ID + ':' + CLIENT_SECRET);
+    // var authorizationHeaderString = 'Authorization: Basic ' + encodedData;
+
+    // $.ajax({
+    //     method: "POST",
+    //     url: "https://accounts.spotify.com/api/token",
+    //     headers: {
+    //         'Authorization': 'Basic ' + (CLIENT_ID + ':' + CLIENT_SECRET).toString('base64')
+    //     },
+    //     form: {
+    //         grant_type: `client_credentials`
+    //     },
+    //     json: true
+    // }).then(function(response) {
+    //     console.log(response.access_token);
+
+
+    // })
+
+    let playlist = $("#rest-input")
+    $.ajax({
+        method: "GET",
+        url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
+        headers: { "Authorization": 'Bearer BQAV58XBZD5FBXpNFscV_bgq9sbZTdJ1TIZVWS_dSfUnOX57GPzwELmdS0TBekDR5lUjDgLTPe5BjZfBKlcoNN5S7YF3UBlZhs7y-ct702LLNkRTI_Xw7P55eXSPiEtLrmknS7qfN24Z2a4GsYk2dwqGokvVQ-7wPEqtim_FSI4tF2ui6PBdCJtI7vA1Tw' },
+
+
+
+    }).then(function(response) {
+        console.log(response)
+
+        let playListDiv = $("<div>");
+        playListDiv.text(response.playlists.items[0].name)
+
+
+        $("#playlist-holder").append(playListDiv)
+    })
+
+
 })
 
 // Our array that contains some of the most common foods from different kinds of cuisines
@@ -160,3 +203,53 @@ foodToCuisine("pizza");
 foodToCuisine("sashimi");
 foodToCuisine("soba");
 foodToCuisine("peking duck");
+
+
+
+
+// function spotifyBuildQueryUrl() {
+
+//     let spotifyQueryURL = `https://api.spotify.com/v1/search`
+//     let queryParams = {}
+//     queryParams.name = `italian`
+//     queryParams.type =
+//         // queryParams.latitude = '37.871593' *WILL USE GOOGLE API FOR LOCATION*
+//         // queryParams.longitude ='-122.272743'*WILL USE GOOGLE API FOR LOCATION*
+//         queryParams.limit = 3
+//     return spotifyQueryURL + $.param(queryParams)
+
+// }
+
+
+
+
+
+
+// $.ajax({
+//     method: "POST",
+//     url: "https://accounts.spotify.com/api/token",
+//     headers: { `content-type`: 'application/x-www-form-urlencoded' },
+//     form: {
+//         grant_type: 'client_credentials',
+//         client_id: '20ca2da8c4a44e2db6dca0c2b59f7823',
+//         client_secret: '9cea1b28e5ae495e816ab87d9a7250ba',
+//     }
+
+// }).then(function(response) {
+//     console.log(response);
+// })
+
+// $.ajax({
+//     method: "GET",
+//     url: `${spotifyApiURL}search`,
+//     dataType: "json",
+//     data: {
+//         q: countryName,
+//         type: "playlist"
+//     }
+// }).then(function(response) {
+//     console.log(response);
+// })
+
+
+// });
