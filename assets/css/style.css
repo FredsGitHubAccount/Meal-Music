@@ -90,4 +90,6 @@ h5{
   margin-bottom: 20px;
 }
 
-  
+.wrong-input {
+  color:red;
+}

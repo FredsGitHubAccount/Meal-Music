@@ -1,33 +1,40 @@
 // Yelp Api-Key
 let apiKEY = "Bearer lhxtMMrJKWK0-jlsuWz-Nr_TLtpMP00yllbOkFIDCP3GE9RQpZ0i9DBLzwNhvI5jsRPTZcQzoKAgoXiQbk1RkN_nokEXjigC5mozh90EGcO6217_NOGZtSxpm_hIXXYx"
+let restLimit = ""
 
 // Constructs yelp URL based on location & categories
 function buildQueryUrl() {
 
     let queryURL = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?`
     let queryParams = {}
-
     queryParams.term = "restaurants"
     queryParams.location = $('#zip-input').val().trim();
 
-    // queryParams.latitude = '37.871593' *WILL USE GOOGLE API FOR LOCATION*
-    // queryParams.longitude ='-122.272743'*WILL USE GOOGLE API FOR LOCATION*
-    queryParams.categories = $("#rest-input").val().trim()
-    queryParams.limit = 3
+    // form validation
+    if (queryParams.location < 1) {
+        $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
+    }
+    queryParams.categories = $("#rest-input").val().trim();
+    queryParams.limit = 5
+    restLimit = queryParams.limit
     return queryURL + $.param(queryParams)
 
 }
 
+// When clicking the search bar trigger an event
 $("#rest-search").on("click", function(event) {
-
+    // Clear the rest holder div
     $("#rest-holder").empty()
 
 
-
+    // Prevent page from refreshing
     event.preventDefault()
+
+    // complete url will be generated with the buildQueryUrl function
     let completeURL = buildQueryUrl()
     console.log(buildQueryUrl())
 
+    // Ajaxcall
     $.ajax({
 
         url: completeURL,
