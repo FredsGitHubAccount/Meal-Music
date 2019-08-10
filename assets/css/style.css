@@ -93,3 +93,9 @@ h5{
 .wrong-input {
   color:red;
 }
+
+.title {
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
