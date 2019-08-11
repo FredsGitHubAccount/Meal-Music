@@ -1,6 +1,88 @@
-// Yelp Api-Key
+// Yelp Api-Key & Global Variables
 let apiKEY = "Bearer lhxtMMrJKWK0-jlsuWz-Nr_TLtpMP00yllbOkFIDCP3GE9RQpZ0i9DBLzwNhvI5jsRPTZcQzoKAgoXiQbk1RkN_nokEXjigC5mozh90EGcO6217_NOGZtSxpm_hIXXYx"
 let restLimit = ""
+let restCategory = ""
+let locationInput = ""
+let shortcut = ""
+const cuisines = [{
+    cuisineName: "Japanese",
+    foods: [
+        "sushi",
+        "sashimi",
+        "nigiri",
+        "roll",
+        "ramen",
+        "chicken teriyaki",
+        "chicken katsu",
+        "tempura",
+        "yakitori",
+        "miso soup",
+        "udon",
+        "soba",
+        "sukiyaki",
+        "kaiseki"
+    ]
+}, {
+    cuisineName: "Chinese",
+    foods: [
+        "dumpling",
+        "peking duck",
+        "chow mein",
+        "congee",
+        "mantou",
+        "char siu",
+        "fried rice",
+        "mapo doufu",
+        "baozi",
+        "wonton",
+        "spring roll",
+        "jiaozi",
+        "zongzi",
+        "youtiao"
+    ]
+}, {
+    cuisineName: "Italian",
+    foods: [
+        "pizza",
+        "pasta",
+        "risotto",
+        "buridda",
+        "cappon magro",
+        "bottarga",
+        "lasagna",
+        "fiorentina steak",
+        "ribollita",
+        "polenta",
+        "ossobuco",
+        "carbonara",
+        "truffles",
+        "aracini",
+        "gelato",
+        "digestivo"
+    ]
+}]
+
+// removes class of the search button to pulse after multiple clicks
+function classRemover() {
+    $("#rest-search").removeClass("pulse")
+}
+
+// Function that will take a food name as an input and returns the cuisine of the food if it exists in our cuisines array, used for spotify api call
+function foodToCuisine(food) {
+
+    for (let i = 0; i < cuisines.length; i++) {
+        if (cuisines[i].foods.indexOf(food) > -1) {
+
+            console.log(`The food you searched for is in the ${cuisines[i].cuisineName} cuisine!`)
+            return cuisines[i].cuisineName
+        }
+    }
+
+    console.log(`The food you searched is not in our array!`)
+    return food
+
+}
+
 
 // Constructs yelp URL based on location & categories
 function buildQueryUrl() {
@@ -15,8 +97,19 @@ function buildQueryUrl() {
         $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
     }
     queryParams.categories = $("#rest-input").val().trim();
-    queryParams.limit = 5
+    
+    if (queryParams.categories < 1){
+        $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
+    }
+
+    // redefining global variables
+    restCategory = $("#rest-input").val().trim();
+    locationInput = $("#zip-input").val().trim();
+
+    
+    queryParams.limit = 5 
     restLimit = queryParams.limit
+    
     return queryURL + $.param(queryParams)
 
 }
@@ -37,7 +130,7 @@ $("#rest-search").on("click", function (event) {
 
     // complete url will be generated with the buildQueryUrl function
     let completeURL = buildQueryUrl()
-    console.log(buildQueryUrl())
+    console.log(completeURL)
 
     // Ajaxcall
     $.ajax({
@@ -49,11 +142,12 @@ $("#rest-search").on("click", function (event) {
     }).then(function (response) {
 
         // created a shortcut for clean code
-        let shortcut = response.businesses
+        shortcut = response.businesses
 
         // Validates a response, if not gives an error
-        if (shortcut.length < 1) {
+        if ((shortcut.length < 1) || (restCategory < 1) || (locationInput < 1)) {
             $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
+            return;
         }
 
         // If valid, dom manipulate
@@ -102,10 +196,44 @@ $("#rest-search").on("click", function (event) {
 
     })
 
+    // ajax call for the playlist, token expires every hour
+
+    let playlist = foodToCuisine($("#rest-input").val().trim())
+    console.log(playlist)
+
+    console.log(playlist)
+    $.ajax({
+        method: "GET",
+        url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
+        headers: { "Authorization": 'Bearer BQBLbPEuS-LcYms5JU5xDSbVvCFHbD0h1aj6iJ25BJfVvgBIk58_eCOQBxEJRc246lBSoYpk4XZEIFWsYcbfKER3n0Us3QiyuVIk9IC8I7BWdF6WxIQaYYQppDOj8sFigeof2yJcXtsSoA' },
+
+
+
+    }).then(function (response) {
+        console.log(response)
+        $("#playlist-text").empty()
+      
+
+
+        if((restCategory < 1) || (locationInput < 1)){
+            $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
+            $("#playlist-text").html(`<h2 class="wrong-input">**We Could Not Find A Playlist**</h2>`)
+            return;
+        }
+     
+        else {
+        let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
+        let playListImg = $("<img>")
+        playListImg.attr("src", response.playlists.items[0].images[0].url)
+        playListImg.addClass("img-fluid rounded newImg")
+        let playListLink = $("<h2>")
+        playListLink.append(`<a href="${response.playlists.items[0].external_urls.spotify}" target="blank">Click Here For Your Spotify Playlist</a>`)
+        
+        playListDiv.append(playListImg)
+        playListDiv.append(playListLink)
+        $("#playlist-holder").html(playListDiv)
+        }
+    })
 
 })
 
-// removes class of the search button to pulse after multiple clicks
-function classRemover() {
-    $("#rest-search").removeClass("pulse")
-}
