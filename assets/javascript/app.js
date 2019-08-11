@@ -4,6 +4,7 @@ let restLimit = ""
 let restCategory = ""
 let locationInput = ""
 let shortcut = ""
+let token = ""
 const cuisines = [{
     cuisineName: "Japanese",
     foods: [
@@ -196,16 +197,34 @@ $("#rest-search").on("click", function (event) {
 
     })
 
+    //     // testing token gain
+    // let clientID = "1bba61329aa440ab915d8a99af8525c2"
+    // let secretID = "9a028d6b6d004deaa9f524eb00d151a2"
+    // $.ajax({
+    //     method: "POST",
+    //     url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token",
+    //     data: {
+    //                 "grant_type":    "authorization_code",
+    //                 "code":          "code",
+    //                 "redirect_uri":  "https://developer.spotify.com/documentation/general/guides/authorization-guide/",
+    //                 "client_secret": secretID,
+    //                 "client_id":     clientID,
+    //               },
+    
+    // }).then(function(response) {
+    //      token = (response.access_token);
+
+
+    // })
+
     // ajax call for the playlist, token expires every hour
 
     let playlist = foodToCuisine($("#rest-input").val().trim())
     console.log(playlist)
-
-    console.log(playlist)
     $.ajax({
         method: "GET",
         url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": 'Bearer BQBLbPEuS-LcYms5JU5xDSbVvCFHbD0h1aj6iJ25BJfVvgBIk58_eCOQBxEJRc246lBSoYpk4XZEIFWsYcbfKER3n0Us3QiyuVIk9IC8I7BWdF6WxIQaYYQppDOj8sFigeof2yJcXtsSoA' },
+        headers: { "Authorization": `Bearer ${tokenhere}`},
 
 
 
