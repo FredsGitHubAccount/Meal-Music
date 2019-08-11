@@ -63,27 +63,6 @@ const cuisines = [{
     ]
 }]
 
-// removes class of the search button to pulse after multiple clicks
-function classRemover() {
-    $("#rest-search").removeClass("pulse")
-}
-
-// Function that will take a food name as an input and returns the cuisine of the food if it exists in our cuisines array, used for spotify api call
-function foodToCuisine(food) {
-
-    for (let i = 0; i < cuisines.length; i++) {
-        if (cuisines[i].foods.indexOf(food) > -1) {
-
-            console.log(`The food you searched for is in the ${cuisines[i].cuisineName} cuisine!`)
-            return cuisines[i].cuisineName
-        }
-    }
-
-    console.log(`The food you searched is not in our array!`)
-    return food
-
-}
-
 
 // Constructs yelp URL based on location & categories
 function buildQueryUrl() {
@@ -112,6 +91,27 @@ function buildQueryUrl() {
     restLimit = queryParams.limit
     
     return queryURL + $.param(queryParams)
+
+}
+
+// removes class of the search button to pulse after multiple clicks
+function classRemover() {
+    $("#rest-search").removeClass("pulse")
+}
+
+// Function that will take a food name as an input and returns the cuisine of the food if it exists in our cuisines array, used for spotify api call
+function foodToCuisine(food) {
+
+    for (let i = 0; i < cuisines.length; i++) {
+        if (cuisines[i].foods.indexOf(food) > -1) {
+
+            console.log(`The food you searched for is in the ${cuisines[i].cuisineName} cuisine!`)
+            return cuisines[i].cuisineName
+        }
+    }
+
+    console.log(`The food you searched is not in our array!`)
+    return food
 
 }
 
@@ -217,6 +217,7 @@ $("#rest-search").on("click", function (event) {
 
     // })
 
+    
     // ajax call for the playlist, token expires every hour
 
     let playlist = foodToCuisine($("#rest-input").val().trim())
