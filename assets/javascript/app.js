@@ -76,7 +76,8 @@ function buildQueryUrl() {
     if (queryParams.location < 1) {
         $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
     }
-    queryParams.categories = $("#rest-input").val().trim();
+    let restaurantInput = $("#rest-input").val().trim();
+    queryParams.categories = restaurantInput.toLowerCase()
     
     if (queryParams.categories < 1){
         $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
@@ -124,13 +125,13 @@ $("#rest-search").on("click", function (event) {
     // Prevent page from refreshing
     event.preventDefault()
 
+    // dynamically give the button a pulse style
     $("#rest-search").addClass('pulse')
-
     setTimeout(classRemover, 2000)
 
 
     // complete url will be generated with the buildQueryUrl function
-    let completeURL = buildQueryUrl()
+    let completeURL = buildQueryUrl().toLowerCase()
     console.log(completeURL)
 
     // Ajaxcall
@@ -150,7 +151,6 @@ $("#rest-search").on("click", function (event) {
             $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
             return;
         }
-
         // If valid, dom manipulate
         else {
 
@@ -197,35 +197,37 @@ $("#rest-search").on("click", function (event) {
 
     })
 
-    //     // testing token gain
+        // testing token gain
     // let clientID = "1bba61329aa440ab915d8a99af8525c2"
     // let secretID = "9a028d6b6d004deaa9f524eb00d151a2"
     // $.ajax({
-    //     method: "POST",
-    //     url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token",
+    //     method: "GET",
+    //     url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/authorize",
     //     data: {
     //                 "grant_type":    "authorization_code",
-    //                 "code":          "code",
+    //                 "code":          "/authorize endpoint",
     //                 "redirect_uri":  "https://developer.spotify.com/documentation/general/guides/authorization-guide/",
     //                 "client_secret": secretID,
     //                 "client_id":     clientID,
+    //                 "Authorization": `Basic base64 encoded ${clientID}:${secretID}`
     //               },
     
-    // }).then(function(response) {
-    //      token = (response.access_token);
+    // }).then(function(res) {
+    //      token = (res.access_token);
 
 
     // })
 
     
     // ajax call for the playlist, token expires every hour
-
-    let playlist = foodToCuisine($("#rest-input").val().trim())
+    let playListCon = $("#rest-input").val().trim()
+    playListCon = playListCon.toLowerCase()
+    let playlist = foodToCuisine(playListCon)
     console.log(playlist)
     $.ajax({
         method: "GET",
-        url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${tokenhere}`},
+        url: `https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
+        headers: { "Authorization": `Bearer ${"BQDEW1PMJa7BYmPYqXm-MTyrYRMAvYYeJT5ks6ozsyG3koQCp2bNxNc6xCR98FBwB9WiuV4ijyTsRI0VfhRlS7PkzqZWgRa5Pg7Ff-IZyseRINAy-nwVk6uEQY2cGbAYWSDruZmKDnrsL78f0DhKo7cQZlkcPGs0h1HXh6sjCRRk5bChqSeyPxEzCTk"}`},
 
 
 
