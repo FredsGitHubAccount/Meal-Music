@@ -2,93 +2,90 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Welcome To Meal Music</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Welcome To Meal Music</title>
 </head>
 <!-- Navbar -->
 <nav class="navbar justify-content-between">
-  <img src="assets/images/fork.png" width="75" height="75" alt="">
-  <a class="navbar-brand"></a>
-  <form class="form-inline">
-    <button class="btn btn-outline-black my-2 my-sm-0 text-black" type="submit">Login</button>
-    <button class="btn btn-outline-black my-2 my-sm-0" type="submit">Sign Up</button>
-  </form>
+    <img src="assets/images/fork.png" width="75" height="75" alt="">
+    <a class="navbar-brand"></a>
+    <form class="form-inline">
+        <button class="btn btn-outline-black my-2 my-sm-0 text-black" type="submit">Login</button>
+        <button class="btn btn-outline-black my-2 my-sm-0" type="submit">Sign Up</button>
+    </form>
 </nav>
 <br>
 <!-- header jumbotron -->
 
 <body>
 
-  <br>
-  <div class="container animated bounceInLeft">
-    <div class="jumbotron rounded">
-      <div class="col-xl-12">
-        <h1 class="text-center rounded"><span id="app-title">Meal Music</span></h1>
-      </div>
-      <br>
-      <!-- body jumbotron -->
-      <form id="movie-form shadow-sm p-3 mb-5 rounded">
+    <br>
+    <div class="container animated bounceInLeft">
+        <div class="jumbotron rounded">
+            <div class="col-xl-12">
+                <h1 class="text-center rounded"><span id="app-title">Meal Music</span></h1>
+            </div>
+            <br>
+            <!-- body jumbotron -->
+            <form id="movie-form shadow-sm p-3 mb-5 rounded">
 
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <button type="submit" class="input-group-text bg-dark text-white animated" id="rest-search">Search</button>
-          </div>
-          <input type="text" id="rest-input" placeholder="Thai, Mexican, Chinese" class="form-control">
-          <input type="text" id="zip-input" placeholder="Zip Or City Required!" class="form-control">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <button type="submit" class="input-group-text bg-dark text-white animated" id="rest-search">Search</button>
+                    </div>
+                    <input type="text" id="rest-input" placeholder="Thai, Mexican, Chinese" class="form-control">
+                    <input type="text" id="zip-input" placeholder="Zip Or City Required!" class="form-control">
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
-  <!-- Playlist Holder -->
-  <div class="container animated bounceInRight">
-    <div class="jumbotron rounded">
-      <h1 id="rest"><span id="playlist-text">Your Playlist Will Be Generated Based On Cuisine!</span></h1>
-      <div id="playlist-holder">
-      </div>
+    <!-- Playlist Holder -->
+    <div class="container animated bounceInRight">
+        <div class="jumbotron rounded">
+            <h1 id="rest"><span id="playlist-text">Your Playlist Will Be Generated Based On Cuisine!</span></h1>
+            <div id="playlist-holder">
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- Restaurant Holder -->
-  <div class="container animated bounceInLeft">
-    <div class="jumbotron rounded">
-      <h1 id="rest"><span id="restaurants-text">Restauraunt Info Will Be Generated Based On Location!</span></h1>
-      <div id="rest-holder">
-      </div>
+    <!-- Restaurant Holder -->
+    <div class="container animated bounceInLeft">
+        <div class="jumbotron rounded">
+            <h1 id="rest"><span id="restaurants-text">Restauraunt Info Will Be Generated Based On Location!</span></h1>
+            <div id="rest-holder">
+            </div>
+        </div>
     </div>
-  </div>
 
 
 
-  <!-- Footer -->
+    <!-- Footer -->
 
-  <footer id="sticky-footer" class="page-footer py-3 bg-dark text-white-50">
-    <div class="container text-center">
-      <!--Facebook-->
-      <a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
-      <!--Twitter-->
-      <a class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
-      <!--Instagram-->
-      <a class="ins-ic mr-3" role="button"><i class="fab fa-lg fa-instagram"></i></a>
-    </div>
-  </footer>
+    <footer id="sticky-footer" class="page-footer py-3 bg-dark text-white-50">
+        <div class="container text-center">
+            <!--Facebook-->
+            <a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
+            <!--Twitter-->
+            <a class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
+            <!--Instagram-->
+            <a class="ins-ic mr-3" role="button"><i class="fab fa-lg fa-instagram"></i></a>
+        </div>
+    </footer>
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="assets/javascript/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 
 </html>
-
