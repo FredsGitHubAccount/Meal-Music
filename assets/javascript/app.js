@@ -82,46 +82,43 @@ $("#rest-search").on("click", function(event) {
     })
 
 
-    let CLIENT_ID = '20ca2da8c4a44e2db6dca0c2b59f7823';
-    let CLIENT_SECRET = '9cea1b28e5ae495e816ab87d9a7250ba';
 
-
-
-    // var encodedData = window.btoa(CLIENT_ID + ':' + CLIENT_SECRET);
-    // var authorizationHeaderString = 'Authorization: Basic ' + encodedData;
-
-    // $.ajax({
-    //     method: "POST",
-    //     url: "https://accounts.spotify.com/api/token",
-    //     headers: {
-    //         'Authorization': 'Basic ' + (CLIENT_ID + ':' + CLIENT_SECRET).toString('base64')
-    //     },
-    //     form: {
-    //         grant_type: `client_credentials`
-    //     },
-    //     json: true
-    // }).then(function(response) {
-    //     console.log(response.access_token);
-
-
-    // })
 
     let playlist = foodToCuisine($("#rest-input").val().trim())
     $.ajax({
         method: "GET",
         url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": 'Bearer BQAV58XBZD5FBXpNFscV_bgq9sbZTdJ1TIZVWS_dSfUnOX57GPzwELmdS0TBekDR5lUjDgLTPe5BjZfBKlcoNN5S7YF3UBlZhs7y-ct702LLNkRTI_Xw7P55eXSPiEtLrmknS7qfN24Z2a4GsYk2dwqGokvVQ-7wPEqtim_FSI4tF2ui6PBdCJtI7vA1Tw' },
+        headers: { "Authorization": 'Bearer BQCASzrEjupJH_ONyHp7RbrIBzWFgNCNxUVEn3GMXSzLQXNDD1i_zzvnft2UhZa2XspEp0xm7E5E15p1qlZ6-1qeD_MRZBqo7zox0V_dfCG9mcWOBdo62jDJSbZUoewtfBYnIKbuLmibIQGVHJdnaJ7XKINsOFrX6PpjcJs-AB_hJzl4Kc-Z1CiDPxKygg' },
 
 
 
     }).then(function(response) {
         console.log(response)
 
-        let playListDiv = $("<div>");
-        playListDiv.text(response.playlists.items[0].name)
 
+
+        let imgURL = response.playlists.items[0].images[0].url
+
+        let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-rest" style="margin:25px">`)
+        let playListName = $(`<h2>${response.playlists.items[0].name}</h2>`)
+        let playListLink = $(`<h5><a href=${response.playlists.items[0].uri}>Link to the playlist</a></h5>`)
+
+        let playListImg = $("<img>")
+        playListImg.attr("src", imgURL)
+        playListImg.addClass("img-fluid rounded newImg")
+
+        let playListButton = $(`<iframe src="https://open.spotify.com/playlist/5QjgJ20xSbkyfDY2iPERtz?si=RvarDQQ4TEK2yuNljJP3EQ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`)
+
+
+        playListDiv.append(playListName)
+        playListDiv.append(playListImg)
+        playListDiv.append(playListLink)
+            // playListDiv.append(playListButton)
 
         $("#playlist-holder").append(playListDiv)
+
+
+
     })
 
 
@@ -210,6 +207,30 @@ foodToCuisine("soba");
 foodToCuisine("peking duck");
 
 
+
+let CLIENT_ID = '20ca2da8c4a44e2db6dca0c2b59f7823';
+let CLIENT_SECRET = '9cea1b28e5ae495e816ab87d9a7250ba';
+
+
+
+// var encodedData = window.btoa(CLIENT_ID + ':' + CLIENT_SECRET);
+// var authorizationHeaderString = 'Authorization: Basic ' + encodedData;
+
+// $.ajax({
+//     method: "POST",
+//     url: "https://accounts.spotify.com/api/token",
+//     headers: {
+//         'Authorization': 'Basic ' + (CLIENT_ID + ':' + CLIENT_SECRET).toString('base64')
+//     },
+//     form: {
+//         grant_type: `client_credentials`
+//     },
+//     json: true
+// }).then(function(response) {
+//     console.log(response.access_token);
+
+
+// })
 
 
 // function spotifyBuildQueryUrl() {
