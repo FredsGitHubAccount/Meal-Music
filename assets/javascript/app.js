@@ -186,45 +186,6 @@ $("#rest-search").on("click", function(event) {
     })
 
 
-
-
-    let playlist = foodToCuisine($("#rest-input").val().trim())
-    $.ajax({
-        method: "GET",
-        url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": 'Bearer BQBMe67v-YpBUQUxKjpJPUpEFZ3eLBzAnhOMqUm1bxZ4cCBH6x7h2N2oWLr7Yx1UfkmoaWmW_BvdTrny_MXKWhJKi7H8hObY_4QhvyM4izIYbKyS5qgaT0g4sIMxPvHcnRQmKPlcxxEiDqGIawjpDBizV7t0mKbqPWKDuwEFpbC-1XleQCUr168B6cT2SA' },
-
-
-
-    }).then(function(response) {
-        console.log(response)
-
-
-
-        let imgURL = response.playlists.items[0].images[0].url
-
-        let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-rest" style="margin:25px">`)
-        let playListName = $(`<h2>${response.playlists.items[0].name}</h2>`)
-        let playListLink = $(`<h5><a href=${response.playlists.items[0].uri}>Link to the playlist</a></h5>`)
-
-        let playListImg = $("<img>")
-        playListImg.attr("src", imgURL)
-        playListImg.addClass("img-fluid rounded newImg")
-
-        let playListButton = $(`<iframe src="https://open.spotify.com/playlist/5QjgJ20xSbkyfDY2iPERtz?si=RvarDQQ4TEK2yuNljJP3EQ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`)
-
-
-        playListDiv.append(playListName)
-        playListDiv.append(playListImg)
-        playListDiv.append(playListLink)
-            // playListDiv.append(playListButton)
-
-        $("#playlist-holder").append(playListDiv)
-
-
-
-    })
-
     // testing token gain
     // let clientID = "1bba61329aa440ab915d8a99af8525c2"
     // let secretID = "9a028d6b6d004deaa9f524eb00d151a2"
@@ -254,8 +215,8 @@ $("#rest-search").on("click", function(event) {
     console.log(playlist)
     $.ajax({
         method: "GET",
-        url: `https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${"BQD0SxSz2w25p1OKzQ9VLicAFPuQ_cG-satdUatUmnLMMy3ilv11jKWP7CoWTziKZJd-7k87ITtbDDRlRiv5BxHpQjSqt5JMrLcEKnULFNOnclmVaok74jSJSmsuJG45hgFHWe3ZuQJeN7QgfNPYvd062gl-XMtAfBR1Zdu-Uo0e7mzMG4Cv9wOxnEM_yFhx63_9ww"}` },
+        url: `https://api.spotify.com/v1/search?q=${playlist}+traditional&type=playlist&limit=1`,
+        headers: { "Authorization": `Bearer ${"BQDbmjinrsCNofveSKjZMjcy9ID29VhWzsM_W4o26fheO2ILAfzxvCtYhTGH_EjJted1ebtIC01ij3tJzT8vQ3ezC6mqP-r4mN1e8A9HnTRb_jLfL-2DwIy_4M-3tZH8-SL5a9T_1ZsS7-rGb47I8fmqoyG37fYPNb5mrvGt6MIN7D6SeF5vjmgd5OE6SA"}` },
 
 
 
@@ -276,9 +237,18 @@ $("#rest-search").on("click", function(event) {
             playListImg.addClass("img-fluid rounded newImg")
             let playListLink = $("<h2>")
             playListLink.append(`<a href="${response.playlists.items[0].external_urls.spotify}" target="blank">Click Here For Your Spotify Playlist</a>`)
+            let playListFrame = $(`<iframe width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media">`)
+            let playListIframeLink = response.playlists.items[0].external_urls.spotify
 
-            playListDiv.append(playListImg)
+            console.log(playListIframeLink)
+                // let sliced = playListIframeLink.slice(34, 56) barbarian way to do it!
+            let sliced = playListIframeLink.split("/").pop()
+            console.log(sliced)
+            playListFrame.attr("src", `https://open.spotify.com/embed/playlist/${sliced}`)
+
+            // playListDiv.append(playListImg)
             playListDiv.append(playListLink)
+            playListDiv.append(playListFrame)
             $("#playlist-holder").html(playListDiv)
         }
     })

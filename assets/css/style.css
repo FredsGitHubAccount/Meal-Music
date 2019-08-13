@@ -2,66 +2,67 @@ body {
     background-image: url("../images/bk-img.jpg");
     background-size: cover;
     font-size: 24px!important;
-
-  }
+}
 
 html {
     height: 110%;
-  }
+}
 
 .jumbotron {
     opacity: .95;
-  }
-  
+}
+
 #sticky-footer {
     flex-shrink: none;
-  }
+}
 
 h1 {
     font-size: 100px!important;
     padding: 80px 50px;
     text-align: center;
     font-family: 'Pacifico', cursive !important;
-  }
+}
+
 h2 {
-  font-size: 48px !important;
-  padding: 80px 50px;
-  text-align: center;
-  font-family: 'Pacifico', cursive !important;
-
+    font-size: 48px !important;
+    padding: 80px 50px;
+    text-align: center;
+    font-family: 'Pacifico', cursive !important;
 }
+
 h3 {
-  font-size: 24px !important;
-  padding: 80px 50px;
-  text-align: center;
-  font-family: 'Pacifico', cursive !important;
-
+    font-size: 24px !important;
+    padding: 80px 50px;
+    text-align: center;
+    font-family: 'Pacifico', cursive !important;
 }
-button, .btn {
+
+button,
+.btn {
     color: #e0dfdc;
     background-color: #333;
     letter-spacing: .1em;
     text-decoration: none;
     float: right;
     font-family: 'Pacifico', cursive !important;
-  }
+}
 
 img {
     display: block;
     margin-right: auto;
-    margin-left: auto; 
+    margin-left: auto;
 }
 
-#movie-form, 
-h4
- {
+#movie-form,
+h4 {
     color: black;
     font-size: 233px;
     letter-spacing: .1em;
     text-decoration: none;
 }
-h5{
-  text-align: center;
+
+h5 {
+    text-align: center;
 }
 
 .bg {
@@ -70,26 +71,31 @@ h5{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
 .jumbotron {
-  background-color: #d8d2cd !important;
-} 
+    background-color: #d8d2cd !important;
+}
 
 #rest {
-  font-size: 40px!important;
-  margin: 25px 25px 25px 25px!important;
-  padding:px 5px 5px 5px!important;
-  color: #4d1920!important;
+    font-size: 40px!important;
+    margin: 25px 25px 25px 25px!important;
+    padding: px 5px 5px 5px!important;
+    color: #4d1920!important;
 }
 
 .newImg {
-  margin: auto;
-  height: 50%;
-  width: 50%;
-  margin-bottom: 20px;
+    margin: auto;
+    height: 50%;
+    width: 50%;
+    margin-bottom: 20px;
 }
 
 .wrong-input {
-  color:red;
+    color: red;
+}
+
+iframe {
+    width: 50%;
+    height: 50%;
 }
