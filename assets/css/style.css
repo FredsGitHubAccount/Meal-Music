@@ -93,3 +93,9 @@ h5{
 .wrong-input {
   color:red;
 }
+
+.player {
+  /* border-style: double;
+  border-width: 15px; */
+  border-radius: 5px;
+}
