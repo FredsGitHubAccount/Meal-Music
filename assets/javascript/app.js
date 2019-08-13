@@ -227,7 +227,7 @@ $("#rest-search").on("click", function (event) {
     $.ajax({
         method: "GET",
         url: `https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${"BQDEW1PMJa7BYmPYqXm-MTyrYRMAvYYeJT5ks6ozsyG3koQCp2bNxNc6xCR98FBwB9WiuV4ijyTsRI0VfhRlS7PkzqZWgRa5Pg7Ff-IZyseRINAy-nwVk6uEQY2cGbAYWSDruZmKDnrsL78f0DhKo7cQZlkcPGs0h1HXh6sjCRRk5bChqSeyPxEzCTk"}`},
+        headers: { "Authorization": `Bearer ${"BQD0SxSz2w25p1OKzQ9VLicAFPuQ_cG-satdUatUmnLMMy3ilv11jKWP7CoWTziKZJd-7k87ITtbDDRlRiv5BxHpQjSqt5JMrLcEKnULFNOnclmVaok74jSJSmsuJG45hgFHWe3ZuQJeN7QgfNPYvd062gl-XMtAfBR1Zdu-Uo0e7mzMG4Cv9wOxnEM_yFhx63_9ww"}`},
 
 
 
