@@ -95,7 +95,8 @@ h5 {
     color: red;
 }
 
-iframe {
-    width: 50%;
-    height: 50%;
+.player {
+    /* border-style: double;
+  border-width: 15px; */
+    border-radius: 5px;
 }

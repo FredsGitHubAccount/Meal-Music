@@ -215,8 +215,13 @@ $("#rest-search").on("click", function(event) {
     console.log(playlist)
     $.ajax({
         method: "GET",
+<<<<<<< HEAD
         url: `https://api.spotify.com/v1/search?q=${playlist}+traditional&type=playlist&limit=1`,
         headers: { "Authorization": `Bearer ${"BQDbmjinrsCNofveSKjZMjcy9ID29VhWzsM_W4o26fheO2ILAfzxvCtYhTGH_EjJted1ebtIC01ij3tJzT8vQ3ezC6mqP-r4mN1e8A9HnTRb_jLfL-2DwIy_4M-3tZH8-SL5a9T_1ZsS7-rGb47I8fmqoyG37fYPNb5mrvGt6MIN7D6SeF5vjmgd5OE6SA"}` },
+=======
+        url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
+        headers: { "Authorization": `Bearer ${"BQCfOOO-bs-NK8C96rVx2bhOPt-5EVCuNLcIimX6ElpBu9IMf1A5S6M3453M2Elvisq46TDwBUrRjRRbqQr3gMRF_fB6eaY8gjUKPdGNnQxrOovDQ-HfQLukJEbbNW0AByuyQR43NH3Pcc68hkjNeFqgrd6kgTKS4rB2Wy_BybGBbqpE9Rrqqa_E5uycpisvRafKmQ"}`},
+>>>>>>> 37c863f34182fad21efe2185c00e18f44c47443d
 
 
 
@@ -230,6 +235,7 @@ $("#rest-search").on("click", function(event) {
             $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
             $("#playlist-text").html(`<h2 class="wrong-input">**We Could Not Find A Playlist**</h2>`)
             return;
+<<<<<<< HEAD
         } else {
             let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
             let playListImg = $("<img>")
@@ -250,6 +256,37 @@ $("#rest-search").on("click", function(event) {
             playListDiv.append(playListLink)
             playListDiv.append(playListFrame)
             $("#playlist-holder").html(playListDiv)
+=======
+        }
+     
+        else {
+        let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
+      
+
+        let playListTitle = $(`<h2 style="margin-bottom:55px">`)
+        playListTitle.html(`Here Is Your Playlist!`)
+        console.log(response.playlists.items[0].external_urls.spotify)
+        
+
+        let playListPlayer = $(`<iframe width="100%" height="300" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
+        playListPlayer.addClass("player")
+        playListSrc = response.playlists.items[0].external_urls.spotify
+       
+        let sliced = playListSrc.split("/").pop();
+
+        playListPlayer.attr("src",`https://open.spotify.com/embed/playlist/${sliced}`)
+        
+      
+        playListDiv.append(playListTitle)
+        playListDiv.append(playListPlayer)
+      
+        $("#playlist-holder").html(playListDiv)
+
+        // let playListImg = $("<img>")
+        // playListImg.attr("src", response.playlists.items[0].images[0].url)
+        // playListImg.addClass("img-fluid rounded newImg")
+        // playListDiv.append(playListLink)
+>>>>>>> 37c863f34182fad21efe2185c00e18f44c47443d
         }
     })
 
