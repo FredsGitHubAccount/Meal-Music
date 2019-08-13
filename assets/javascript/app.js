@@ -143,36 +143,6 @@ $("#rest-search").on("click", function(event) {
 
     }).then(function(response) {
 
-        $("#rest-input").val("")
-        $('#zip-input').val("")
-
-        let shortcut = response.businesses
-        $("#restaurants-text").empty()
-
-        for (let i = 0; i < shortcut.length; i++) {
-            console.log(shortcut[i].name)
-            console.log(shortcut[i].categories[0].title)
-
-            let imgURL = shortcut[i].image_url
-
-            let restDiv = $(`<div class="shadow jumbotron bg-white rounded new-rest" style="margin:25px">`)
-            let restTitle = $(`<h2>${shortcut[i].name}</h2>`)
-            let restRating = $(`<h3>Rating : ${shortcut[i].rating} out of 5 stars!</h3>`)
-            let restImg = $("<img>")
-            restImg.attr("src", imgURL)
-            restImg.addClass("img-fluid rounded newImg")
-            let restAdress = $(`<h5>Address : ${shortcut[i].location.display_address}</h5>`)
-            let restWebsite = $(`<h5><a href=${shortcut[i].url}>${shortcut[i].name} Website</a></h5>`)
-
-            restDiv.append(restTitle)
-            restDiv.append(restRating)
-            restDiv.append(restImg)
-            restDiv.append(restAdress)
-            restDiv.append(restWebsite)
-            $("#rest-holder").append(restDiv)
-
-        }
-
         // created a shortcut for clean code
         shortcut = response.businesses
 
@@ -181,10 +151,51 @@ $("#rest-search").on("click", function(event) {
             $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
             return;
         }
+        // If valid, dom manipulate
+        else {
 
+            // clears the fields
+            $("#rest-input").val("")
+            $('#zip-input').val("")
+
+            // empty the placeholder text
+            $("#restaurants-text").empty()
+
+            // loop through the responses
+            for (let i = 0; i < shortcut.length; i++) {
+                console.log(shortcut[i].name)
+                console.log(shortcut[i].categories[0].title)
+
+                // created a shortcut for image url
+                let imgURL = shortcut[i].image_url
+
+                // dom manipulation
+                let restDiv = $(`<div class="shadow jumbotron bg-white rounded new-rest" style="margin:25px">`)
+                let restTitle = $(`<h2>${shortcut[i].name}</h2>`)
+                let restRating = $(`<h3>Rating : ${shortcut[i].rating} out of 5 stars!</h3>`)
+                let restImg = $("<img>")
+                restImg.attr("src", imgURL)
+                restImg.addClass("img-fluid rounded newImg")
+                let restAdress = $(`<h5>Address : ${shortcut[i].location.display_address}</h5>`)
+                let restWebsite = $(`<h5><a href=${shortcut[i].url}>${shortcut[i].name}'s Website</a></h5>`)
+
+                // adding content to our newly created div
+                restDiv.append(restTitle)
+                restDiv.append(restRating)
+                restDiv.append(restImg)
+                restDiv.append(restAdress)
+                restDiv.append(restWebsite)
+
+                // adding newly created div to the holder
+                $("#rest-holder").append(restDiv)
+
+            }
+
+
+            $("#restaurants-text").append(`<h2 style="margin-bottom:75px;">The Top ${restLimit} Restaurants Near You</h2>`)
+        }
 
     })
-
 
     // testing token gain
     // let clientID = "1bba61329aa440ab915d8a99af8525c2"
@@ -215,13 +226,8 @@ $("#rest-search").on("click", function(event) {
     console.log(playlist)
     $.ajax({
         method: "GET",
-<<<<<<< HEAD
-        url: `https://api.spotify.com/v1/search?q=${playlist}+traditional&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${"BQDbmjinrsCNofveSKjZMjcy9ID29VhWzsM_W4o26fheO2ILAfzxvCtYhTGH_EjJted1ebtIC01ij3tJzT8vQ3ezC6mqP-r4mN1e8A9HnTRb_jLfL-2DwIy_4M-3tZH8-SL5a9T_1ZsS7-rGb47I8fmqoyG37fYPNb5mrvGt6MIN7D6SeF5vjmgd5OE6SA"}` },
-=======
         url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${"BQCfOOO-bs-NK8C96rVx2bhOPt-5EVCuNLcIimX6ElpBu9IMf1A5S6M3453M2Elvisq46TDwBUrRjRRbqQr3gMRF_fB6eaY8gjUKPdGNnQxrOovDQ-HfQLukJEbbNW0AByuyQR43NH3Pcc68hkjNeFqgrd6kgTKS4rB2Wy_BybGBbqpE9Rrqqa_E5uycpisvRafKmQ"}`},
->>>>>>> 37c863f34182fad21efe2185c00e18f44c47443d
+        headers: { "Authorization": `Bearer ${"BQCfOOO-bs-NK8C96rVx2bhOPt-5EVCuNLcIimX6ElpBu9IMf1A5S6M3453M2Elvisq46TDwBUrRjRRbqQr3gMRF_fB6eaY8gjUKPdGNnQxrOovDQ-HfQLukJEbbNW0AByuyQR43NH3Pcc68hkjNeFqgrd6kgTKS4rB2Wy_BybGBbqpE9Rrqqa_E5uycpisvRafKmQ"}` },
 
 
 
@@ -235,58 +241,33 @@ $("#rest-search").on("click", function(event) {
             $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
             $("#playlist-text").html(`<h2 class="wrong-input">**We Could Not Find A Playlist**</h2>`)
             return;
-<<<<<<< HEAD
         } else {
             let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
-            let playListImg = $("<img>")
-            playListImg.attr("src", response.playlists.items[0].images[0].url)
-            playListImg.addClass("img-fluid rounded newImg")
-            let playListLink = $("<h2>")
-            playListLink.append(`<a href="${response.playlists.items[0].external_urls.spotify}" target="blank">Click Here For Your Spotify Playlist</a>`)
-            let playListFrame = $(`<iframe width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media">`)
-            let playListIframeLink = response.playlists.items[0].external_urls.spotify
 
-            console.log(playListIframeLink)
-                // let sliced = playListIframeLink.slice(34, 56) barbarian way to do it!
-            let sliced = playListIframeLink.split("/").pop()
-            console.log(sliced)
-            playListFrame.attr("src", `https://open.spotify.com/embed/playlist/${sliced}`)
 
-            // playListDiv.append(playListImg)
-            playListDiv.append(playListLink)
-            playListDiv.append(playListFrame)
+            let playListTitle = $(`<h2 style="margin-bottom:55px">`)
+            playListTitle.html(`Here Is Your Playlist!`)
+            console.log(response.playlists.items[0].external_urls.spotify)
+
+
+            let playListPlayer = $(`<iframe width="100%" height="300" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
+            playListPlayer.addClass("player")
+            playListSrc = response.playlists.items[0].external_urls.spotify
+
+            let sliced = playListSrc.split("/").pop();
+
+            playListPlayer.attr("src", `https://open.spotify.com/embed/playlist/${sliced}`)
+
+
+            playListDiv.append(playListTitle)
+            playListDiv.append(playListPlayer)
+
             $("#playlist-holder").html(playListDiv)
-=======
-        }
-     
-        else {
-        let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
-      
 
-        let playListTitle = $(`<h2 style="margin-bottom:55px">`)
-        playListTitle.html(`Here Is Your Playlist!`)
-        console.log(response.playlists.items[0].external_urls.spotify)
-        
-
-        let playListPlayer = $(`<iframe width="100%" height="300" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
-        playListPlayer.addClass("player")
-        playListSrc = response.playlists.items[0].external_urls.spotify
-       
-        let sliced = playListSrc.split("/").pop();
-
-        playListPlayer.attr("src",`https://open.spotify.com/embed/playlist/${sliced}`)
-        
-      
-        playListDiv.append(playListTitle)
-        playListDiv.append(playListPlayer)
-      
-        $("#playlist-holder").html(playListDiv)
-
-        // let playListImg = $("<img>")
-        // playListImg.attr("src", response.playlists.items[0].images[0].url)
-        // playListImg.addClass("img-fluid rounded newImg")
-        // playListDiv.append(playListLink)
->>>>>>> 37c863f34182fad21efe2185c00e18f44c47443d
+            // let playListImg = $("<img>")
+            // playListImg.attr("src", response.playlists.items[0].images[0].url)
+            // playListImg.addClass("img-fluid rounded newImg")
+            // playListDiv.append(playListLink)
         }
     })
 
