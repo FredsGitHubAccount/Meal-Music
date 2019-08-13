@@ -88,7 +88,7 @@ $("#rest-search").on("click", function(event) {
     $.ajax({
         method: "GET",
         url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": 'Bearer BQCASzrEjupJH_ONyHp7RbrIBzWFgNCNxUVEn3GMXSzLQXNDD1i_zzvnft2UhZa2XspEp0xm7E5E15p1qlZ6-1qeD_MRZBqo7zox0V_dfCG9mcWOBdo62jDJSbZUoewtfBYnIKbuLmibIQGVHJdnaJ7XKINsOFrX6PpjcJs-AB_hJzl4Kc-Z1CiDPxKygg' },
+        headers: { "Authorization": 'Bearer BQBMe67v-YpBUQUxKjpJPUpEFZ3eLBzAnhOMqUm1bxZ4cCBH6x7h2N2oWLr7Yx1UfkmoaWmW_BvdTrny_MXKWhJKi7H8hObY_4QhvyM4izIYbKyS5qgaT0g4sIMxPvHcnRQmKPlcxxEiDqGIawjpDBizV7t0mKbqPWKDuwEFpbC-1XleQCUr168B6cT2SA' },
 
 
 
