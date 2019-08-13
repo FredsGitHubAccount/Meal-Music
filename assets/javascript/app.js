@@ -226,8 +226,8 @@ $("#rest-search").on("click", function (event) {
     console.log(playlist)
     $.ajax({
         method: "GET",
-        url: `https://api.spotify.com/v1/search?q=${playlist}&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${"BQD0SxSz2w25p1OKzQ9VLicAFPuQ_cG-satdUatUmnLMMy3ilv11jKWP7CoWTziKZJd-7k87ITtbDDRlRiv5BxHpQjSqt5JMrLcEKnULFNOnclmVaok74jSJSmsuJG45hgFHWe3ZuQJeN7QgfNPYvd062gl-XMtAfBR1Zdu-Uo0e7mzMG4Cv9wOxnEM_yFhx63_9ww"}`},
+        url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
+        headers: { "Authorization": `Bearer ${"BQCfOOO-bs-NK8C96rVx2bhOPt-5EVCuNLcIimX6ElpBu9IMf1A5S6M3453M2Elvisq46TDwBUrRjRRbqQr3gMRF_fB6eaY8gjUKPdGNnQxrOovDQ-HfQLukJEbbNW0AByuyQR43NH3Pcc68hkjNeFqgrd6kgTKS4rB2Wy_BybGBbqpE9Rrqqa_E5uycpisvRafKmQ"}`},
 
 
 
@@ -245,17 +245,32 @@ $("#rest-search").on("click", function (event) {
      
         else {
         let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
-        let playListImg = $("<img>")
-        playListImg.attr("src", response.playlists.items[0].images[0].url)
-        playListImg.addClass("img-fluid rounded newImg")
-        let playListLink = $("<h2>")
-        playListLink.append(`<a href="${response.playlists.items[0].external_urls.spotify}" target="blank">Click Here For Your Spotify Playlist</a>`)
+      
+
+        let playListTitle = $(`<h2 style="margin-bottom:55px">`)
+        playListTitle.html(`Here Is Your Playlist!`)
+        console.log(response.playlists.items[0].external_urls.spotify)
         
-        playListDiv.append(playListImg)
-        playListDiv.append(playListLink)
+
+        let playListPlayer = $(`<iframe width="100%" height="300" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
+        playListPlayer.addClass("player")
+        playListSrc = response.playlists.items[0].external_urls.spotify
+       
+        let sliced = playListSrc.split("/").pop();
+
+        playListPlayer.attr("src",`https://open.spotify.com/embed/playlist/${sliced}`)
+        
+      
+        playListDiv.append(playListTitle)
+        playListDiv.append(playListPlayer)
+      
         $("#playlist-holder").html(playListDiv)
+
+        // let playListImg = $("<img>")
+        // playListImg.attr("src", response.playlists.items[0].images[0].url)
+        // playListImg.addClass("img-fluid rounded newImg")
+        // playListDiv.append(playListLink)
         }
     })
 
 })
-
