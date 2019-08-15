@@ -21,7 +21,50 @@ const cuisines = [{
         "udon",
         "soba",
         "sukiyaki",
-        "kaiseki"
+        "kaiseki",
+        "noodles"
+    ]
+}, {
+    cuisineName: "America",
+    foods: [
+        "burgers",
+        "steaks",
+        "steak",
+        "sandwiches",
+        "fries",
+        "burger",
+        "pork",
+        "bbq",
+        "chicken",
+        "hotdogs",
+        "hotdog",
+    ]
+}, {
+    cuisineName: "Mexican",
+    foods: [
+        "taco",
+        "tacos",
+        "quesadilla",
+        "salsa",
+        "chipotle",
+        "fajitas",
+        "fajita",
+        "quesadillas",
+        "burrito",
+        "burritos",
+        "guacamole",
+    ]
+}, {
+    cuisineName: "Middle-Eastern",
+    foods: [
+        "kebab",
+        "kebabs",
+        "tabouleh",
+        "shawarma",
+        "hummus",
+        "pita",
+        "babaganoush",
+
     ]
 }, {
     cuisineName: "Chinese",
@@ -197,28 +240,6 @@ $("#rest-search").on("click", function(event) {
 
     })
 
-    // testing token gain
-    // let clientID = "1bba61329aa440ab915d8a99af8525c2"
-    // let secretID = "9a028d6b6d004deaa9f524eb00d151a2"
-    // $.ajax({
-    //     method: "GET",
-    //     url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/authorize",
-    //     data: {
-    //                 "grant_type":    "authorization_code",
-    //                 "code":          "/authorize endpoint",
-    //                 "redirect_uri":  "https://developer.spotify.com/documentation/general/guides/authorization-guide/",
-    //                 "client_secret": secretID,
-    //                 "client_id":     clientID,
-    //                 "Authorization": `Basic base64 encoded ${clientID}:${secretID}`
-    //               },
-
-    // }).then(function(res) {
-    //      token = (res.access_token);
-
-
-    // })
-
-
     // ajax call for the playlist, token expires every hour
     let playListCon = $("#rest-input").val().trim()
     playListCon = playListCon.toLowerCase()
@@ -236,13 +257,12 @@ $("#rest-search").on("click", function(event) {
         $("#playlist-text").empty()
 
 
-
-        if ((restCategory < 1) || (locationInput < 1)) {
+        if ((restCategory < 1) || (locationInput < 1) || (response.playlists.length < 1)) {
             $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
             $("#playlist-text").html(`<h2 class="wrong-input">**We Could Not Find A Playlist**</h2>`)
             return;
         } else {
-            let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist" style="margin:25px">`);
+            let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist animated fadeInDownBig" style="margin:25px">`);
 
 
             let playListTitle = $(`<h2 style="margin-bottom:55px">`)
@@ -250,7 +270,7 @@ $("#rest-search").on("click", function(event) {
             console.log(response.playlists.items[0].external_urls.spotify)
 
 
-            let playListPlayer = $(`<iframe width="100%" height="300" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
+            let playListPlayer = $(`<iframe width="100%" height="200" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
             playListPlayer.addClass("player")
             playListSrc = response.playlists.items[0].external_urls.spotify
 
@@ -272,3 +292,25 @@ $("#rest-search").on("click", function(event) {
     })
 
 })
+
+
+// testing token gain
+// let clientID = "1bba61329aa440ab915d8a99af8525c2"
+// let secretID = "9a028d6b6d004deaa9f524eb00d151a2"
+// $.ajax({
+//     method: "GET",
+//     url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/authorize",
+//     data: {
+//                 "grant_type":    "authorization_code",
+//                 "code":          "/authorize endpoint",
+//                 "redirect_uri":  "https://developer.spotify.com/documentation/general/guides/authorization-guide/",
+//                 "client_secret": secretID,
+//                 "client_id":     clientID,
+//                 "Authorization": `Basic base64 encoded ${clientID}:${secretID}`
+//               },
+
+// }).then(function(res) {
+//      token = (res.access_token);
+
+
+// })
