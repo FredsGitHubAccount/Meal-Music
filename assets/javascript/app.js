@@ -227,7 +227,7 @@ $("#rest-search").on("click", function(event) {
     $.ajax({
         method: "GET",
         url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
-        headers: { "Authorization": `Bearer ${"BQCfOOO-bs-NK8C96rVx2bhOPt-5EVCuNLcIimX6ElpBu9IMf1A5S6M3453M2Elvisq46TDwBUrRjRRbqQr3gMRF_fB6eaY8gjUKPdGNnQxrOovDQ-HfQLukJEbbNW0AByuyQR43NH3Pcc68hkjNeFqgrd6kgTKS4rB2Wy_BybGBbqpE9Rrqqa_E5uycpisvRafKmQ"}` },
+        headers: { "Authorization": `Bearer ${"BQBVQ9rZD87MOvkIXedWAgVnLbwCoeOS-kgNiQw5C0kErgajVFaKR1IwTqYzf-aStypfmqKqQM3aO_Z4quLYdx6Fd5IzqzWzTmPRr-mXBAvw1xFE1Z3KyWud6eIuo6Cn9Rr9s4p9Ppd4V4sqNpbkJ7tYWLeni86AcAYJ7fp9Pqpd6EFwnI29-G6Lbv3OLg"}` },
 
 
 
