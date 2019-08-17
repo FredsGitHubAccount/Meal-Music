@@ -270,7 +270,7 @@ $("#rest-search").on("click", function(event) {
             console.log(response.playlists.items[0].external_urls.spotify)
 
 
-            let playListPlayer = $(`<iframe width="100%" height="200" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
+            let playListPlayer = $(`<iframe width="100%" height="400" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
             playListPlayer.addClass("player")
             playListSrc = response.playlists.items[0].external_urls.spotify
 
