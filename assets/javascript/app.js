@@ -278,15 +278,14 @@ $("#rest-search").on("click", function (event) {
         url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
-        success: function(response) { 
+        success: function(data) { 
           // Do something with the returned data
   
-              console.log(response)
             $("#playlist-text").empty()
           
     
     
-            if((restCategory < 1) || (locationInput < 1) ||(response.playlists.length<1)){
+            if((restCategory < 1) || (locationInput < 1) ||(data.playlists.length<1)){
                 $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
                 $("#playlist-text").html(`<h2 class="wrong-input">**We Could Not Find A Playlist**</h2>`)
                 return;
@@ -298,12 +297,12 @@ $("#rest-search").on("click", function (event) {
     
             let playListTitle = $(`<h2 style="margin-bottom:55px">`)
             playListTitle.html(`Here Is Your Playlist!`)
-            console.log(response.playlists.items[0].external_urls.spotify)
+            console.log(data.playlists.items[0].external_urls.spotify)
             
     
             let playListPlayer = $(`<iframe width="100%" height="400" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
             playListPlayer.addClass("player")
-            playListSrc = response.playlists.items[0].external_urls.spotify
+            playListSrc = data.playlists.items[0].external_urls.spotify
            
             let sliced = playListSrc.split("/").pop();
     
