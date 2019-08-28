@@ -262,7 +262,7 @@ $("#rest-search").on("click", function (event) {
     
     // Replace with your app's client ID, redirect URI and desired scopes
     const clientId = '1bba61329aa440ab915d8a99af8525c2';
-    const redirectUri = `https://fredsgithubaccount.github.io/Meal-Music/`;
+    const redirectUri = 'https://fredsgithubaccount.github.io/Meal-Music/'
     const scopes = [
       'user-top-read'
     ];
@@ -275,12 +275,13 @@ $("#rest-search").on("click", function (event) {
     playListCon = playListCon.toLowerCase()
     let playlist = foodToCuisine(playListCon)
     $.ajax({
-        url: `https://api.spotify.com/v1/search?q=${playlist+"traditional"}&type=playlist&limit=1`,
+        url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
         success: function(data) { 
           // Do something with the returned data
-          data.items.map(function(response) { console.log(response)
+  
+              console.log(response)
             $("#playlist-text").empty()
           
     
@@ -320,14 +321,14 @@ $("#rest-search").on("click", function (event) {
             // playListDiv.append(playListLink)
             }
      
-          });
+     
         }
      });
      
 
     // ajax call for the playlist, token expires every hour
     
-
+    console.log(playlist)
     // $.ajax({
     //     method: "GET",
     //     url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
@@ -375,9 +376,9 @@ $("#rest-search").on("click", function (event) {
     //     // playListImg.addClass("img-fluid rounded newImg")
     //     // playListDiv.append(playListLink)
     //     }
-    // })
+    })
 
-})
+// })
 
 
         // testing token gain
