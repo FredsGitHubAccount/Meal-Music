@@ -6,6 +6,35 @@ let locationInput = ""
 let shortcut = ""
 let token = ""
 
+const hash = window.location.hash
+.substring(1)
+.split('&')
+.reduce(function (initial, item) {
+  if (item) {
+    var parts = item.split('=');
+    initial[parts[0]] = decodeURIComponent(parts[1]);
+  }
+  return initial;
+}, {});
+window.location.hash = '';
+
+// Set token
+let _token = hash.access_token;
+
+const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+// Replace with your app's client ID, redirect URI and desired scopes
+const clientId = '1bba61329aa440ab915d8a99af8525c2';
+const redirectUri = 'https://fredsgithubaccount.github.io/Meal-Music/'
+const scopes = [
+  'user-top-read'
+];
+
+// If there is no token, redirect to Spotify authorization
+if (!_token) {
+  window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+}
+
 
 const cuisines = [{
     cuisineName: "Japanese",
@@ -243,34 +272,6 @@ $("#rest-search").on("click", function (event) {
 
     })
     
-    const hash = window.location.hash
-    .substring(1)
-    .split('&')
-    .reduce(function (initial, item) {
-      if (item) {
-        var parts = item.split('=');
-        initial[parts[0]] = decodeURIComponent(parts[1]);
-      }
-      return initial;
-    }, {});
-    window.location.hash = '';
-    
-    // Set token
-    let _token = hash.access_token;
-    
-    const authEndpoint = 'https://accounts.spotify.com/authorize';
-    
-    // Replace with your app's client ID, redirect URI and desired scopes
-    const clientId = '1bba61329aa440ab915d8a99af8525c2';
-    const redirectUri = 'https://fredsgithubaccount.github.io/Meal-Music/'
-    const scopes = [
-      'user-top-read'
-    ];
-    
-    // If there is no token, redirect to Spotify authorization
-    if (!_token) {
-      window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
-    }
     let playListCon = $("#rest-input").val().trim()
     playListCon = playListCon.toLowerCase()
     let playlist = foodToCuisine(playListCon)
