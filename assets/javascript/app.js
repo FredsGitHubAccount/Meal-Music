@@ -23,16 +23,12 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
-// Replace with your app's client ID, redirect URI and desired scopes
 const clientId = '1bba61329aa440ab915d8a99af8525c2';
 const redirectUri = 'https://fredsgithubaccount.github.io/Meal-Music/'
-const scopes = [
-  'user-top-read'
-];
 
 // If there is no token, redirect to Spotify authorization
 if (!_token) {
-  window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
+  window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`;
 }
 
 
@@ -280,7 +276,7 @@ $("#rest-search").on("click", function (event) {
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
         success: function(data) { 
-          // Do something with the returned data
+        
   
             $("#playlist-text").empty()
           
@@ -315,89 +311,9 @@ $("#rest-search").on("click", function (event) {
           
             $("#playlist-holder").html(playListDiv)
     
-            // let playListImg = $("<img>")
-            // playListImg.attr("src", response.playlists.items[0].images[0].url)
-            // playListImg.addClass("img-fluid rounded newImg")
-            // playListDiv.append(playListLink)
             }
-     
      
         }
      });
      
-
-    // ajax call for the playlist, token expires every hour
-    
-    console.log(playlist)
-    // $.ajax({
-    //     method: "GET",
-    //     url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
-    //     headers: { "Authorization": `Bearer ${"BQBgD0TdngrjXtQkRZL7I19mFUF51B9MU0EfrrqVlvb0x03b_HgpzHVCT0iCZlOMKWP_7xd7mbiCxntEs5ZlmLSlSym7JmdhRWdpPekhgYoRhMH_Uw8CEIlpDRZtiLXF02ROJeZnp_Z-JVGQNpBd-Xzk8t10lDQ-Hp4qWGei_CuOTkJ7qNj_LuG7ToINzNtP2ab9QA"}`},
-
-
-
-    // }).then(function (response) {
-    //     console.log(response)
-    //     $("#playlist-text").empty()
-      
-
-
-    //     if((restCategory < 1) || (locationInput < 1) ||(response.playlists.length<1)){
-    //         $("#restaurants-text").html(`<h2 class="wrong-input">**You Must Fill Out Valid Fields**</h2>`)
-    //         $("#playlist-text").html(`<h2 class="wrong-input">**We Could Not Find A Playlist**</h2>`)
-    //         return;
-    //     }
-     
-    //     else {
-    //     let playListDiv = $(`<div class="shadow jumbotron bg-white rounded new-playlist animated fadeInDownBig" style="margin:25px">`);
-      
-
-    //     let playListTitle = $(`<h2 style="margin-bottom:55px">`)
-    //     playListTitle.html(`Here Is Your Playlist!`)
-    //     console.log(response.playlists.items[0].external_urls.spotify)
-        
-
-    //     let playListPlayer = $(`<iframe width="100%" height="400" frameborder="5" allowtransparency="true" allow="encrypted-media">`)
-    //     playListPlayer.addClass("player")
-    //     playListSrc = response.playlists.items[0].external_urls.spotify
-       
-    //     let sliced = playListSrc.split("/").pop();
-
-    //     playListPlayer.attr("src",`https://open.spotify.com/embed/playlist/${sliced}`)
-        
-      
-    //     playListDiv.append(playListTitle)
-    //     playListDiv.append(playListPlayer)
-      
-    //     $("#playlist-holder").html(playListDiv)
-
-    //     // let playListImg = $("<img>")
-    //     // playListImg.attr("src", response.playlists.items[0].images[0].url)
-    //     // playListImg.addClass("img-fluid rounded newImg")
-    //     // playListDiv.append(playListLink)
-    //     }
     })
-
-// })
-
-
-        // testing token gain
-    // let clientID = "1bba61329aa440ab915d8a99af8525c2"
-    // let secretID = "9a028d6b6d004deaa9f524eb00d151a2"
-    // $.ajax({
-    //     method: "GET",
-    //     url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/authorize",
-    //     data: {
-    //                 "grant_type":    "authorization_code",
-    //                 "code":          "/authorize endpoint",
-    //                 "redirect_uri":  "https://developer.spotify.com/documentation/general/guides/authorization-guide/",
-    //                 "client_secret": secretID,
-    //                 "client_id":     clientID,
-    //                 "Authorization": `Basic base64 encoded ${clientID}:${secretID}`
-    //               },
-    
-    // }).then(function(res) {
-    //      token = (res.access_token);
-
-
-    // })
