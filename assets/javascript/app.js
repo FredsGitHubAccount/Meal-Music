@@ -278,7 +278,7 @@ $("#rest-search").on("click", function (event) {
         url: `https://api.spotify.com/v1/search?q=${playlist+" traditional"}&type=playlist&limit=1`,
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
-        success: function(data) { 
+        success: function(response) { 
           // Do something with the returned data
   
               console.log(response)
