@@ -201,9 +201,9 @@ $("#rest-search").on("click", function (event) {
         // If valid, dom manipulate
         else {
 
-            // clears the fields
-            $("#rest-input").val("")
-            $('#zip-input').val("")
+            // // clears the fields
+            // $("#rest-input").val("")
+            // $('#zip-input').val("")
 
             // empty the placeholder text
             $("#restaurants-text").empty()
