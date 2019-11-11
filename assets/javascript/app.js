@@ -223,8 +223,8 @@ $("#rest-search").on("click", function (event) {
         else {
 
             // // clears the fields
-            // $("#rest-input").val("")
-            // $('#zip-input').val("")
+            $("#rest-input").val("")
+            $('#zip-input').val("")
 
             // empty the placeholder text
             $("#restaurants-text").empty()
