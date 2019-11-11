@@ -1,8 +1,8 @@
 body {
     background-image: url("../images/bk-img.jpg");
     background-size: cover;
-    font-size: 24px!important;
-    
+    background-attachment: fixed;
+    background-repeat: no-repeat;    
   }
 
 html {
@@ -64,12 +64,6 @@ h5{
   text-align: center;
 }
 
-.bg {
-    background-image: url("/Users/jeremygilbert/Desktop/group_project/assets/images/bk-img2.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
-  }
 
 .jumbotron {
   background-color: #d8d2cd !important;
